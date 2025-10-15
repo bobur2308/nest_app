@@ -10,38 +10,34 @@ import { UpdateUserDto } from './dto/update-user.dto';
 export class UserController {
   constructor(private readonly userService: UserService) {}
 
-  @ApiOperation({ summary: 'Barcha foydalanuvchilarni olish' })
-  @ApiResponse({ status: 200, description: 'Foydalanuvchilar ro‘yxati', type: [User] })
+  @ApiResponse({ status: 200,  type: [User] })
   @Get()
   findAll() {
     return this.userService.findAll();
   }
 
-  @ApiOperation({ summary: 'ID orqali foydalanuvchini olish' })
-  @ApiResponse({ status: 200, description: 'Topilgan foydalanuvchi', type: User })
+  @ApiResponse({ status: 200, type: User })
   @Get(':id')
   findOne(@Param('id') id: number) {
     return this.userService.findOne(+id);
   }
 
-  @ApiOperation({ summary: 'Yangi foydalanuvchi yaratish' })
+
   @ApiBody({ type: CreateUserDto })
-  @ApiResponse({ status: 201, description: 'Foydalanuvchi yaratildi', type: User })
+  @ApiResponse({ status: 201, type: User })
   @Post()
   create(@Body() body: CreateUserDto) {
     return this.userService.create(body);
   }
 
-  @ApiOperation({ summary: 'Foydalanuvchini yangilash' })
   @ApiBody({ type: UpdateUserDto })
-  @ApiResponse({ status: 200, description: 'Yangilangan foydalanuvchi', type: User })
+  @ApiResponse({ status: 200, type: User })
   @Put(':id')
   update(@Param('id') id: number, @Body() body: UpdateUserDto) {
     return this.userService.update(+id, body);
   }
 
-  @ApiOperation({ summary: 'Foydalanuvchini o‘chirish' })
-  @ApiResponse({ status: 200, description: 'Foydalanuvchi o‘chirildi' })
+  @ApiResponse({ status: 200 })
   @Delete(':id')
   remove(@Param('id') id: number) {
     return this.userService.remove(+id);
