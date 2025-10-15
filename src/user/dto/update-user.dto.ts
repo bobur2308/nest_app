@@ -5,4 +5,6 @@ import { IsPhoneNumber } from 'class-validator/types/decorator/string/IsPhoneNum
 export class UpdateUserDto extends PartialType(CreateUserDto) {
   @ApiProperty({ example: '["admin", "user"]' })
   roles: string[];
+  @ApiProperty({ example: true })
+  isActive: boolean;
 }
