@@ -3,8 +3,8 @@ import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 
 export function setupSwagger(app: INestApplication): void {
   const config = new DocumentBuilder()
-    .setTitle('User CRUD API')
-    .setDescription('NestJS va PostgreSQL asosida yaratilgan CRUD API hujjati')
+    .setTitle('Api Documentation')
+    .setDescription('API documentation for operations')
     .setVersion('1.0')
     .addTag('')
     .build();
